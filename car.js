@@ -1,10 +1,11 @@
+//utilizing sloppy inverse kinematics
 function Car(r, g, b) {
-  this.x = 200;
+  this.x = 200; //arbitrary for now
   this.y = 200;
 
   this.xspeed = 0;
   this.yspeed = 0;
-  this.xaccel = 1;
+  this.xaccel = 1; //accel is a multiplier in this model
   this.yaccel = 1;
 
   this.deccelRate = .99;
@@ -21,21 +22,8 @@ function Car(r, g, b) {
   }
 
   this.deccelerate = function () {
-
-    //deccelerate y
-    if (this.yspeed < 0) {
-      this.yaccel *= this.deccelRate;
-    } else if (this.yspeed > 0) {
-      this.yaccel *= this.deccelRate;
-    }
-
-    //deccelerate x
-    if (this.xspeed < 0) {
-      this.xaccel *= this.deccelRate;
-    } else if (this.xspeed > 0) {
-      this.xaccel *= this.deccelRate;
-    }
-
+    this.xaccel *= this.deccelRate;
+    this.yaccel *= this.deccelRate;
   }
 
   this.dir = function (x, y) {
@@ -65,8 +53,8 @@ function Car(r, g, b) {
       this.yaccel = 0;
     }
 
-    this.x = this.x + this.xspeed;
-    this.y = this.y + this.yspeed;
+    this.x += this.xspeed;
+    this.y += this.yspeed;
 
     this.x = constrain(this.x, 0, width);
     this.y = constrain(this.y, 0, height);

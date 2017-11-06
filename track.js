@@ -12,11 +12,10 @@ function Track() {
   }
 
   this.isOnTrack = function (x, y) {
-    x = x - width / 2;
+    x = x - width / 2; //set such that 0,0 is at center
     y = y - height / 2;
-    x = abs(x);
-    y = abs(y);
-    if ((sqrt(x * x + y * y) >= this.innerWidth / 2) && (sqrt(x * x + y * y) <= this.outerWidth / 2)) {
+    d = sqrt(x * x + y * y);
+    if ((d >= this.innerWidth / 2) && (d <= this.outerWidth / 2)) {
       return true;
     } else {
       return false;
