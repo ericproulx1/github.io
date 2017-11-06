@@ -51,8 +51,8 @@ function draw() {
     me.dir(-.2, 0);
   }
 
-  if(keyIsDown(82)||keyIsDown(114)) {
-      setup();
+  if (keyIsDown(82) || keyIsDown(114)) {
+    setup();
   }
 
   if (keyIsDown(88) || keyIsDown(120)) {
@@ -75,12 +75,12 @@ function draw() {
     console.log("Game over.");
     text(posXmsg + round(me.x) + " " + posUnits, 275, 300);
     text(posYmsg + round(me.y) + " " + posUnits, 275, 325);
-    text(velXmsg + round(me.xspeed*fr) + " " + velUnits, 300, 350);
-    text(velYmsg + round(me.yspeed*fr) + " " + velUnits, 300, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)*fr) + " " + velUnits, 275, 400);
-    text(accXmsg + accX*fr + " " + accUnits, 300, 425);
-    text(accYmsg + accY*fr + " " + accUnits, 300, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY)*fr + " " + accUnits, 275, 475);
+    text(velXmsg + round(me.xspeed * fr) + " " + velUnits, 300, 350);
+    text(velYmsg + round(me.yspeed * fr) + " " + velUnits, 300, 375);
+    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed) * fr) + " " + velUnits, 275, 400);
+    text(accXmsg + accX * fr + " " + accUnits, 300, 425);
+    text(accYmsg + accY * fr + " " + accUnits, 300, 450);
+    text(ovrAccmsg + sqrt(accX * accX + accY * accY) * fr + " " + accUnits, 275, 475);
     text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 275, 500);
     text(timemsg + time + " " + timeUnits, 275, 525);
   } else {
@@ -91,12 +91,12 @@ function draw() {
     accY = (currentSpeedY - prevSpeedY);
     text(posXmsg + round(me.x) + " " + posUnits, 275, 300);
     text(posYmsg + round(me.y) + " " + posUnits, 275, 325);
-    text(velXmsg + round(me.xspeed*fr) + " " + velUnits, 300, 350);
-    text(velYmsg + round(me.yspeed*fr) + " " + velUnits, 300, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)*fr) + " " + velUnits, 275, 400);
-    text(accXmsg + accX*fr + " " + accUnits, 300, 425);
-    text(accYmsg + accY*fr + " " + accUnits, 300, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY)*fr + " " + accUnits, 275, 475);
+    text(velXmsg + round(me.xspeed * fr) + " " + velUnits, 300, 350);
+    text(velYmsg + round(me.yspeed * fr) + " " + velUnits, 300, 375);
+    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed) * fr) + " " + velUnits, 275, 400);
+    text(accXmsg + accX * fr + " " + accUnits, 300, 425);
+    text(accYmsg + accY * fr + " " + accUnits, 300, 450);
+    text(ovrAccmsg + sqrt(accX * accX + accY * accY) * fr + " " + accUnits, 275, 475);
     text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 275, 500);
     time = round(millis() / 1000);
     text(timemsg + time + " " + timeUnits, 275, 525);
