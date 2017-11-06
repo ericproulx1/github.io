@@ -51,6 +51,10 @@ function draw() {
     me.dir(-.2, 0);
   }
 
+  if(keyIsDown(82)||keyIsDown(114)) {
+      setup();
+  }
+
   if (keyIsDown(88) || keyIsDown(120)) {
     me.deccelerate();
     image(brake, 25, 670, brake.width / 2.2, brake.height / 2.2);
