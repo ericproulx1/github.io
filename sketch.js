@@ -6,14 +6,20 @@ function setup() {
   gas = loadImage("img/gasv2.png");
   posXmsg = "Position X:\t";
   posYmsg = "Position Y:\t";
+  posUnits = "pixels";
   velXmsg = "Velocity X:\t";
   velYmsg = "Velocity Y:\t";
+  velUnits = "pixels/sec";
   ovrVelmsg = "Overall velocity:\t";
   accXmsg = "Acceleration X:\t";
   accYmsg = "Acceleration Y:\t";
+  accUnits = "pixels/sec^2";
   ovrAccmsg = "Overall acceleration:\t";
   angmsg = "Delta Theta:\t";
+  angUnits = "degrees";
   timemsg = "Time elapsed:\t";
+  timeUnits = "seconds";
+  fr = 30;
   currentTheta = 0;
   prevTheta = 0;
   currentSpeedX = 0;
@@ -23,7 +29,7 @@ function setup() {
   accX = 0;
   accY = 0;
 
-  frameRate(30);
+  frameRate(fr);
 }
 
 function draw() {
@@ -63,34 +69,33 @@ function draw() {
     me.xspeed = 0;
     me.yspeed = 0;
     console.log("Game over.");
-    //pause();
-    text(posXmsg + round(me.x), 300, 300);
-    text(posYmsg + round(me.y), 300, 325);
-    text(velXmsg + round(me.xspeed), 325, 350);
-    text(velYmsg + round(me.yspeed), 325, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)), 300, 400);
-    text(accXmsg + accX, 325, 425);
-    text(accYmsg + accY, 325, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY), 300, 475);
-    text(angmsg + (currentTheta - prevTheta), 300, 500);
-    text(timemsg + time, 300, 525);
+    text(posXmsg + round(me.x) + " " + posUnits, 300, 300);
+    text(posYmsg + round(me.y) + " " + posUnits, 300, 325);
+    text(velXmsg + round(me.xspeed*fr) + " " + velUnits, 325, 350);
+    text(velYmsg + round(me.yspeed*fr) + " " + velUnits, 325, 375);
+    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)*fr) + " " + velUnits, 300, 400);
+    text(accXmsg + accX*fr + " " + accUnits, 325, 425);
+    text(accYmsg + accY*fr + " " + accUnits, 325, 450);
+    text(ovrAccmsg + sqrt(accX * accX + accY * accY)*fr + " " + accUnits, 300, 475);
+    text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 300, 500);
+    text(timemsg + time + " " + timeUnits, 300, 525);
   } else {
     currentTheta = atan(me.yspeed / me.xspeed) * 180;
     currentSpeedX = me.xspeed;
     currentSpeedY = me.yspeed;
     accX = (currentSpeedX - prevSpeedX);
     accY = (currentSpeedY - prevSpeedY);
-    text(posXmsg + round(me.x), 300, 300);
-    text(posYmsg + round(me.y), 300, 325);
-    text(velXmsg + round(me.xspeed), 325, 350);
-    text(velYmsg + round(me.yspeed), 325, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)), 300, 400);
-    text(accXmsg + accX, 325, 425);
-    text(accYmsg + accY, 325, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY), 300, 475);
-    text(angmsg + (currentTheta - prevTheta), 300, 500);
+    text(posXmsg + round(me.x) + " " + posUnits, 300, 300);
+    text(posYmsg + round(me.y) + " " + posUnits, 300, 325);
+    text(velXmsg + round(me.xspeed*fr) + " " + velUnits, 325, 350);
+    text(velYmsg + round(me.yspeed*fr) + " " + velUnits, 325, 375);
+    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed)*fr) + " " + velUnits, 300, 400);
+    text(accXmsg + accX*fr + " " + accUnits, 325, 425);
+    text(accYmsg + accY*fr + " " + accUnits, 325, 450);
+    text(ovrAccmsg + sqrt(accX * accX + accY * accY)*fr + " " + accUnits, 300, 475);
+    text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 300, 500);
     time = round(millis() / 1000);
-    text(timemsg + time, 300, 525);
+    text(timemsg + time + " " + timeUnits, 300, 525);
     prevTheta = currentTheta;
     prevSpeedX = currentSpeedX;
     prevSpeedY = currentSpeedY;
