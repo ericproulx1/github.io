@@ -10,7 +10,7 @@ function Car(r, g, b) {
   this.yaccel = 1;
 
   this.deccelRate = .99;
-  this.friction = .9995;
+  this.friction = .985;
 
   this.r = r;
   this.g = g;
