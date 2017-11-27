@@ -4,33 +4,8 @@ function setup() {
   track = new Track(); //track
   brake = loadImage("img/brakev2.png");
   gas = loadImage("img/gasv2.png");
-  /*
-  posXmsg = "Position X:\t";
-  posYmsg = "Position Y:\t";
-  posUnits = "pixels";
-  velXmsg = "Velocity X:\t";
-  velYmsg = "Velocity Y:\t";
-  velUnits = "pixels/sec";
-  ovrVelmsg = "Overall velocity:\t";
-  accXmsg = "Acceleration X:\t";
-  accYmsg = "Acceleration Y:\t";
-  accUnits = "pixels/sec^2";
-  ovrAccmsg = "Overall acceleration:\t";
-  angmsg = "Delta Theta:\t";
-  angUnits = "degrees";
-  timemsg = "Time elapsed:\t";
-  timeUnits = "seconds";
-  */
   fr = 30; //frameRate
   currentTheta = 0;
-  prevTheta = 0;
-  currentSpeedX = 0;
-  currentSpeedY = 0;
-  prevSpeedX = 0;
-  prevSpeedY = 0;
-  accX = 0;
-  accY = 0;
-
   frameRate(fr);
 }
 
@@ -71,44 +46,8 @@ function draw() {
   }
 
   if (!track.isOnTrack(me.x, me.y, me.radius)) {
-    me.recolor(255, 0, 0);
-    me.xspeed = 0;
-    me.yspeed = 0;
-    console.log("Game over.");
-/*
-    text(posXmsg + round(me.x) + " " + posUnits, 275, 300);
-    text(posYmsg + round(me.y) + " " + posUnits, 275, 325);
-    text(velXmsg + round(me.xspeed * fr) + " " + velUnits, 300, 350);
-    text(velYmsg + round(me.yspeed * fr) + " " + velUnits, 300, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed) * fr) + " " + velUnits, 275, 400);
-    text(accXmsg + accX * fr + " " + accUnits, 300, 425);
-    text(accYmsg + accY * fr + " " + accUnits, 300, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY) * fr + " " + accUnits, 275, 475);
-    text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 275, 500);
-    text(timemsg + time + " " + timeUnits, 275, 525);
-*/
-  } else {
-    /*
-    currentTheta = atan(me.yspeed / me.xspeed) * 180;
-    currentSpeedX = me.xspeed;
-    currentSpeedY = me.yspeed;
-    accX = (currentSpeedX - prevSpeedX);
-    accY = (currentSpeedY - prevSpeedY);
-    text(posXmsg + round(me.x) + " " + posUnits, 275, 300);
-    text(posYmsg + round(me.y) + " " + posUnits, 275, 325);
-    text(velXmsg + round(me.xspeed * fr) + " " + velUnits, 300, 350);
-    text(velYmsg + round(me.yspeed * fr) + " " + velUnits, 300, 375);
-    text(ovrVelmsg + round(sqrt(me.xspeed * me.xspeed + me.yspeed * me.yspeed) * fr) + " " + velUnits, 275, 400);
-    text(accXmsg + accX * fr + " " + accUnits, 300, 425);
-    text(accYmsg + accY * fr + " " + accUnits, 300, 450);
-    text(ovrAccmsg + sqrt(accX * accX + accY * accY) * fr + " " + accUnits, 275, 475);
-    text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 275, 500);
-    time = round(millis() / 1000);
-    text(timemsg + time + " " + timeUnits, 275, 525);
-    prevTheta = currentTheta;
-    prevSpeedX = currentSpeedX;
-    prevSpeedY = currentSpeedY;
-    */
+    currentTheta = atan2(me.yspeed, me.xspeed) * 180/PI;
+    //do math, find cross product of currentTheta and part of track/ball collided with, set car to that x&y
+    console.log(currentTheta);
   }
-
 }
