@@ -4,6 +4,7 @@ function setup() {
   track = new Track(); //track
   brake = loadImage("img/brakev2.png");
   gas = loadImage("img/gasv2.png");
+  /*
   posXmsg = "Position X:\t";
   posYmsg = "Position Y:\t";
   posUnits = "pixels";
@@ -19,6 +20,7 @@ function setup() {
   angUnits = "degrees";
   timemsg = "Time elapsed:\t";
   timeUnits = "seconds";
+  */
   fr = 30; //frameRate
   currentTheta = 0;
   prevTheta = 0;
@@ -68,11 +70,12 @@ function draw() {
     image(gas, width - 25 - gas.width / 2, 670, gas.width / 2, gas.height / 2);
   }
 
-  if (!track.isOnTrack(me.x, me.y)) {
+  if (!track.isOnTrack(me.x, me.y, me.radius)) {
     me.recolor(255, 0, 0);
     me.xspeed = 0;
     me.yspeed = 0;
     console.log("Game over.");
+/*
     text(posXmsg + round(me.x) + " " + posUnits, 275, 300);
     text(posYmsg + round(me.y) + " " + posUnits, 275, 325);
     text(velXmsg + round(me.xspeed * fr) + " " + velUnits, 300, 350);
@@ -83,7 +86,9 @@ function draw() {
     text(ovrAccmsg + sqrt(accX * accX + accY * accY) * fr + " " + accUnits, 275, 475);
     text(angmsg + (currentTheta - prevTheta) + " " + angUnits, 275, 500);
     text(timemsg + time + " " + timeUnits, 275, 525);
+*/
   } else {
+    /*
     currentTheta = atan(me.yspeed / me.xspeed) * 180;
     currentSpeedX = me.xspeed;
     currentSpeedY = me.yspeed;
@@ -103,6 +108,7 @@ function draw() {
     prevTheta = currentTheta;
     prevSpeedX = currentSpeedX;
     prevSpeedY = currentSpeedY;
+    */
   }
 
 }

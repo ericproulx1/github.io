@@ -2,6 +2,7 @@
 function Car(r, g, b) {
   this.x = 200; //arbitrary for now
   this.y = 200;
+  this.radius = 20;
 
   this.xspeed = 0;
   this.yspeed = 0;
@@ -63,6 +64,6 @@ function Car(r, g, b) {
 
   this.show = function () {
     fill(this.r, this.g, this.b);
-    ellipse(this.x, this.y, 20, 20);
+    ellipse(this.x, this.y, this.radius, this.radius);
   }
 }

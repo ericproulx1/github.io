@@ -11,11 +11,11 @@ function Track() {
     ellipse(width / 2, height / 2, this.innerWidth, this.innerHeight);
   }
 
-  this.isOnTrack = function (x, y) {
+  this.isOnTrack = function (x, y, diameter) {
     x = x - width / 2; //set such that 0,0 is at center
     y = y - height / 2;
     d = sqrt(x * x + y * y);
-    if ((d >= this.innerWidth / 2) && (d <= this.outerWidth / 2)) {
+    if ((d - diameter/2 >= this.innerWidth / 2) && (d + diameter/2 <= this.outerWidth / 2)) {
       return true;
     } else {
       return false;
