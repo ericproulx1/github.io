@@ -105,32 +105,164 @@ function Car(r, g, b) {
     this.paused = false;
   }
 
+  this.isInRegion2 = function (x, y) {
+    x = x - width / 2; //set such that 0,0 is at center
+    y = y - height / 2;
+    d = sqrt(x * x + y * y);
+
+    if ((d > (track.innerWidth + track.outerWidth)/2 / 2)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   this.handleBounce = function () {
     angleWall = atan2(this.y - height / 2, this.x - width / 2);
-    angleVel = atan2(this.yspeed, this.xspeed);
     if (angleWall != PI) {
       angleWall *= -1;
-    }
-    if (angleVel != PI) {
-      angleVel *= -1;
     }
     if (angleWall < 0) {
       angleWall += 2 * PI;
     }
-    if (angleVel < 0) {
-      angleVel += 2 * PI;
-    }
     angleWall *= 180 / PI;
-    angleVel *= 180 / PI;
-    //console.log(angleWall + "\t" + angleVel);
-    result = acos((cos(angleWall) * cos(angleVel) + sin(angleWall) * sin(angleVel)) / (abs(angleWall) * abs(angleVel)));
-    //console.log(result);
-    this.xaccel = cos(result) * this.xaccel;
-    this.yaccel = sin(result) * this.yaccel;
-    this.xspeed = cos(result) * this.xspeed;
-    this.yspeed = sin(result) * this.yspeed;
-    this.x = (cos(result) + this.x);
-    this.y = (sin(result) + this.y);
+
+    DEGREES_IN_CIRCLE = 360;
+    NUM_REGIONS = 8;
+    DEGREES_PER_REGION = DEGREES_IN_CIRCLE / NUM_REGIONS;
+    bounceAmount = 3;
+    velMultiplier = 0;
+    accMultiplier = 0;
+
+    if (angleWall <= DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x -= bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x += bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 2 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x += bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x += bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 3 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x += bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x += bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 4 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x += bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x -= bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 5 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x += bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x -= bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 6 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x += bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = 1;
+            this.yaccel = 1;
+        } else {
+            this.x -= bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 7 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x -= bounceAmount;
+            this.y -= bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x -= bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    } else if(angleWall <= 8 * DEGREES_PER_REGION) {
+        if (this.isInRegion2(this.x, this.y)) {
+            this.x -= bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        } else {
+            this.x += bounceAmount;
+            this.y += bounceAmount;
+            this.xvel *= velMultiplier;
+            this.yvel *= velMultiplier;
+            this.xaccel = accMultiplier;
+            this.yaccel = accMultiplier;
+        }
+    }
   }
 
 }
