@@ -1,9 +1,18 @@
 //utilizing sloppy inverse kinematics
 function Car(r, g, b) {
-  this.x = 200; //arbitrary for now
-  this.y = 200;
+  this.x = width / 2; //arbitrary for now
+  this.y = 120;
   this.radius = 20;
 
+  //range is 235 -- 310
+  this.range = 235;
+  this.startPause = 0;
+  this.endPause = 0;
+  this.paused = false;
+  this.orbitSpeed = 0;
+
+  this.prevTheta = 0;
+  this.currentTheta = 0;
   this.xspeed = 0;
   this.yspeed = 0;
   this.xaccel = 1; //accel is a multiplier in this model
@@ -66,4 +75,62 @@ function Car(r, g, b) {
     fill(this.r, this.g, this.b);
     ellipse(this.x, this.y, this.radius, this.radius);
   }
+
+  this.safemode = function () {
+    ang = TWO_PI * this.orbitSpeed / (8192);
+    this.x = width / 2 + cos(ang) * this.range;
+    this.y = height / 2 + sin(ang) * this.range;
+  }
+
+  this.calcSpeed = function () {
+    if (this.paused) {
+      this.orbitSpeed = this.orbitSpeed;
+    }
+    if (!this.paused) {
+      this.orbitSpeed = (millis() - this.endPause);
+    }
+  }
+
+  this.pauseOrbit = function () {
+    if (!this.paused) {
+      this.startPause = millis();
+    }
+    this.paused = true;
+  }
+
+  this.resumeOrbit = function () {
+    if (this.paused) {
+      this.endPause = this.endPause + (millis() - this.startPause);
+    }
+    this.paused = false;
+  }
+
+  this.handleBounce = function () {
+    angleWall = atan2(this.y - height / 2, this.x - width / 2);
+    angleVel = atan2(this.yspeed, this.xspeed);
+    if (angleWall != PI) {
+      angleWall *= -1;
+    }
+    if (angleVel != PI) {
+      angleVel *= -1;
+    }
+    if (angleWall < 0) {
+      angleWall += 2 * PI;
+    }
+    if (angleVel < 0) {
+      angleVel += 2 * PI;
+    }
+    angleWall *= 180 / PI;
+    angleVel *= 180 / PI;
+    //console.log(angleWall + "\t" + angleVel);
+    result = acos((cos(angleWall) * cos(angleVel) + sin(angleWall) * sin(angleVel)) / (abs(angleWall) * abs(angleVel)));
+    //console.log(result);
+    this.xaccel = cos(result) * this.xaccel;
+    this.yaccel = sin(result) * this.yaccel;
+    this.xspeed = cos(result) * this.xspeed;
+    this.yspeed = sin(result) * this.yspeed;
+    this.x = (cos(result) + this.x);
+    this.y = (sin(result) + this.y);
+  }
+
 }

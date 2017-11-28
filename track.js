@@ -15,12 +15,18 @@ function Track() {
     x = x - width / 2; //set such that 0,0 is at center
     y = y - height / 2;
     d = sqrt(x * x + y * y);
-    if ((d - diameter/2 >= this.innerWidth / 2) && (d + diameter/2 <= this.outerWidth / 2)) {
+    //this is the proper logic for detecting the edge of the car.  Commented out to figure out the bounce logic.
+    /*if ((d - diameter/2 >= this.innerWidth / 2) && (d + diameter/2 <= this.outerWidth / 2)) {
       return true;
     } else {
       return false;
     }
-
+    */
+    if ((d >= this.innerWidth / 2) && (d <= this.outerWidth / 2)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
