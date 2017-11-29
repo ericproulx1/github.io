@@ -5,6 +5,9 @@ function Track() {
   }else
   {
     this.outerWidth = height;
+    this.outerHeight = height;
+    this.innerWidth = this.outerWidth * .7;
+    this.innerHeight = this.outerWidth * .7;
   }
  
   this.outerHeight = this.outerWidth
