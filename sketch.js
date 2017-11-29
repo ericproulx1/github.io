@@ -36,7 +36,7 @@ function draw() {
 
     if (keyIsDown(88) || keyIsDown(120)) { //x for brake
       me.deccelerate();
-      image(brake, window.innerWidth +Track.outerWidth/2, Track.outerHeight+10, 20 , 20); //make brake smaller, appear depressed
+      image(brake, window.innerWidth +Track.outerWidth/2, Track.outerHeight+10, 20, 20); //make brake smaller, appear depressed
     } else {
       image(brake, window.innerWidth +Track.outerWidth/2, Track.outerHeight+10, 20, 20);
     }
