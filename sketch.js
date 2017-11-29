@@ -3,7 +3,7 @@ function setup() {
   me = new Car(255, 255, 255); //car
   track = new Track(); //track
   brake = loadImage("img/brakev2.png");
-  image(brake, window.innerWidth/2 + Track.outerWidth +200, 0, 20, 20);
+  image(brake, window.innerWidth/2 + Track.outerWidth +100, 0, 20, 20);
   gas = loadImage("img/gasv2.png");
   fr = 30; //frameRate
   currentTheta = 0;
