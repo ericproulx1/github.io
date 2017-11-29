@@ -3,7 +3,7 @@ function setup() {
   me = new Car(255, 255, 255); //car
   track = new Track(); //track
   brake = loadImage("img/brakev2.png");
-  image(brake, window.innerWidth, 0, 20, 20);
+  image(brake, window.innerWidth/2, 0, 20, 20);
   gas = loadImage("img/gasv2.png");
   fr = 30; //frameRate
   currentTheta = 0;
@@ -37,9 +37,9 @@ function draw() {
 
     if (keyIsDown(88) || keyIsDown(120)) { //x for brake
       me.deccelerate();
-      image(brake, window.innerWidth, 0, 20, 20); //make brake smaller, appear depressed
+      image(brake, window.innerWidth/2, 0, 20, 20); //make brake smaller, appear depressed
     } else {
-      image(brake, window.innerWidth, 0, 20, 20);
+      image(brake, window.innerWidth/2, 0, 20, 20);
     }
 
     if (keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) {
