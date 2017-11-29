@@ -44,7 +44,7 @@ function draw() {
     if (keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) {
       image(gas, window.innerWidth/4, window.innerHeight/4, gas.height / 2.2); //make gas smaller, appear depressed
     } else {
-      image(gas, window.innerWidth/4, window.innerHeight/, gas.width / 2, gas.height / 2);
+      image(gas, window.innerWidth/4, window.innerHeight/4, gas.width / 2, gas.height / 2);
     }
 
     if (!track.isOnTrack(me.x, me.y, me.radius)) {
