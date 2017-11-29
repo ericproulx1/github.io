@@ -36,15 +36,15 @@ function draw() {
 
     if (keyIsDown(88) || keyIsDown(120)) { //x for brake
       me.deccelerate();
-      image(brake, window.innerWidth/4, window.innerHeight/4, brake.width / 2.2, brake.height / 2.2); //make brake smaller, appear depressed
+      image(brake, window.innerWidth/4, window.innerHeight/4, 20 , 20); //make brake smaller, appear depressed
     } else {
-      image(brake, window.innerWidth/4, window.innerHeight/4, brake.width / 2, brake.height / 2);
+      image(brake, window.innerWidth/4, window.innerHeight/4, 20, 20);
     }
 
     if (keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) {
-      image(gas, window.innerWidth/4, window.innerHeight/4, gas.height / 2.2); //make gas smaller, appear depressed
+      image(gas, window.innerWidth/4, window.innerHeight/4, 20,20);//make gas smaller, appear depressed
     } else {
-      image(gas, window.innerWidth/4, window.innerHeight/4, gas.width / 2, gas.height / 2);
+      image(gas, window.innerWidth/4, window.innerHeight/4, 20, 20;
     }
 
     if (!track.isOnTrack(me.x, me.y, me.radius)) {
