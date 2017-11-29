@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(800, 800); //bg
+  createCanvas(window.innerWidth, window.innerHeight); //bg
   me = new Car(255, 255, 255); //car
   track = new Track(); //track
   brake = loadImage("img/brakev2.png");
