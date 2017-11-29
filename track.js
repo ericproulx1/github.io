@@ -1,17 +1,14 @@
 function Track() {
-  if(width<height)
+  if (width<height)
   {
     this.outerWidth = width;
-    this.outerHeight = width;
-    this.innerWidth = this.outerWidth * .7;
-    this.innerHeight = this.outerWidth * .7;
   }else
   {
     this.outerWidth = height;
-    this.outerHeight = height;
-    this.innerWidth = this.outerWidth * .7;
-    this.innerHeight = this.outerWidth * .7;
   }
+  this.outerHeight = this.outerWidth
+  this.innerWidth = this.outerWidth * .7;
+  this.innerHeight = this.innerWidth;
 
   this.drawTrack = function () {
     fill(0, 0, 0);
