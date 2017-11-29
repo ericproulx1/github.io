@@ -42,9 +42,9 @@ function draw() {
     }
 
     if (keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) {
-      image(gas, window.innerWidth/4, window.innerHeight/4, 20,20);//make gas smaller, appear depressed
+      image(gas, window.innerWidth/4, window.innerHeight/4, 20, 20);//make gas smaller, appear depressed
     } else {
-      image(gas, window.innerWidth/4, window.innerHeight/4, 20, 20;
+      image(gas, window.innerWidth/4, window.innerHeight/4, 20, 20);
     }
 
     if (!track.isOnTrack(me.x, me.y, me.radius)) {
